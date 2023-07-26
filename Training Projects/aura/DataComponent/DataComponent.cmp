@@ -1,0 +1,35 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!--<lightning:card title="Test Component">-->
+        
+    <aura:attribute name="firstName" 
+                    type="string" 
+                    default="Kalpesh" 
+                    description="This field is used to store the FirstName"></aura:attribute>
+    
+    <aura:attribute name="lastName" 
+                    type="string" 
+                    default="Ketkar" 
+                    description="This field is used to store the LastName"></aura:attribute>
+    
+    
+    <lightning:card title="Test Component">
+    <p class="slds-var-p-around_small">The Employee First Name is : {!v.firstName}</p>
+    <p class="slds-var-p-around_small">The Employee Last Name is : {!v.lastName}</p>
+    <p class="slds-var-p-around_small">The Employee Full Name is : {!v.firstName}, {!v.lastName}</p>  
+    </lightning:card>
+    
+    <lightning:card title="Enter your Name">
+    	<ui:inputText label="Enter Full Name" 
+                      aura:id="EnteredName" 
+                      placeholder="First, Last" 
+                      class="slds-var-m-around_medium"></ui:inputText>
+        <ui:button aura:id="OutputButton"
+                   label="Submit"
+                   press="{!c.getOutput}"
+                   class="slds-var-m-around_medium"></ui:button>
+        <ui:outputText aura:id="OutputText"
+                       value=""></ui:outputText>
+    </lightning:card>
+	
+</aura:component>

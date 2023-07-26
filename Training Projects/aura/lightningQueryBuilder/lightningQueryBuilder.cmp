@@ -1,0 +1,44 @@
+<aura:component controller="FetchDataTablesClass" access="global" implements="force:appHostable">
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="allObject" type="List" access="PRIVATE"/>
+    <aura:attribute name="allField" type="List" access="PRIVATE"/>
+    <aura:attribute name="selectedObject" type="String" access="PRIVATE"/>
+    <aura:attribute name="selectedField" type="String" access="PRIVATE"/>
+    
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:card title="Generate the Query" class="slds-var-m-around_medium">
+    
+    
+            Select The Object
+        
+    
+            <lightning:select name="Choose Object" 
+                              label="Select a Object" 
+                              aura:id="objectId" 
+                              class="slds-var-m-around_small" 
+                              value="{!v.selectedObject}" 
+                              onchange="{!c.handleChange}">
+                <option value="">choose object</option>
+                <aura:iteration items="{!v.allObject}" var="object">
+                    <option text="{!object.value}" 
+                            value="{!object.key}" 
+                            selected="{!object.selected}"/>
+                </aura:iteration>
+            </lightning:select>
+        	
+    		<lightning:dualListbox name="allField" label="Here are the Fields" aura:id="fieldId" value="{!v.selectedField}">
+                    <aura:iteration items="{!v.allField}" var="field">
+                        <option text="{!field}" value="{!field}" selected="{!field.selected}"/>
+                    </aura:iteration>
+            </lightning:dualListbox>
+    
+    		<lightning:button label="Generate Query" 
+                              class="slds-var-m-around_small"></lightning:button>
+      
+     </lightning:card>
+    
+        
+</aura:component>

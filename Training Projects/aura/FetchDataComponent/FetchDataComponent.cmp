@@ -1,0 +1,36 @@
+<aura:component controller= "FetchDataTablesClass" 
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <!--Attributes-->
+    <aura:attribute name="allObject" type="list" ></aura:attribute>
+    <aura:attribute name="orgField" type="list" ></aura:attribute>
+    <aura:attribute name="selectedObject" type="string" ></aura:attribute>
+    <aura:attribute name="selectedField" type="string" ></aura:attribute>
+    
+    <!--Handler-->
+     <aura:handler name="getVal" value="{!this}" action="{!c.getVal}"></aura:handler>
+    
+	<!--Component Markup-->
+    <lightning:card title="Make Query" class="slds-var-m-around_medium">
+    
+    <div class="slds-p-around_small">Use me to Generate the Queries</div>
+       
+    			<lightning:select name="select" label="Select a Object" required="true">
+        			<aura:iteration items="{!v.allObject}" var="allObject">
+                		<option value="{!allObject}"></option>
+            		</aura:iteration>
+    			</lightning:select>
+        <!--<lightning:dualListbox aura:id="MultiSelect"
+                               label="Select Fields"
+                               value="allField"
+                               placeholder="Select 1 or more options"
+                               required="true"
+                               class="slds-var-m-around_small"/>
+        <lightning:button label="Generate Query" 
+                          class="slds-var-m-around_small"
+                          onclick="{!c.getInput}"/>
+        <ui:outputText aura:id="OutputText"
+                       value=""></ui:outputText>-->
+    </lightning:card>
+    
+</aura:component>

@@ -1,0 +1,43 @@
+<template>
+    <!--<lightning-card title="Wrapper Class Demo in LWC" icon-name="custom:custom63">
+    <template if:true={wrapperList.data}>
+        <lightning-accordion class="example-accordion" >
+            <template for:each={wrapperList.data} for:item="wrap">
+                <lightning-accordion-section name={wrap.accRecord.Id} label={wrap.accRecord.Name} key={wrap.accRecord.Id}>
+                    <template for:each={wrap.contactList} for:item="contWrap">
+                        <lightning-layout vertical-align="center" key={contWrap.Id}>
+                            <li>
+                                {contWrap.FirstName}
+                                {contWrap.LastName}
+                            </li>
+                        </lightning-layout>
+                    </template>
+                </lightning-accordion-section>
+
+            </template>
+        </lightning-accordion>
+    </template>
+</lightning-card>-->
+
+
+<lightning-card title="Account And Opportunity Wrapper">
+    <div class="slds-var-m-around_medium">
+        <lightning-accordion class="example-accordion" >
+        <template for:each={warpperListAccOpp.data} for:item="wrap">
+            <lightning-accordion-section name={wrap.acc.Id} label={wrap.acc.Name} key={wrap.acc.Id}>
+                <template for:each={wrap.oppList} for:item="oppWrap">
+                    <lightning-layout vertical-align="center" key={oppWrap.Id}>
+                        <li>
+                            {oppWrap.Name}
+                            {oppWrap.Amount}
+                            {oppWrap.StageName}
+                        </li>
+                    </lightning-layout>
+                </template>
+            </lightning-accordion-section>
+        </template>
+    </lightning-accordion>
+        </div>
+</lightning-card>
+</template>
+

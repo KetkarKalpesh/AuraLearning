@@ -1,0 +1,7 @@
+div {
+    background: rgba(118, 20, 156, 0.526);
+    background: linear-gradient(90deg, rgba(41, 171, 169, 0.563) 0%, rgba(144, 41, 30, 0.832) 52%, rgba(0,212,255,1) 100%);
+    font-family: cursive;
+    text-align: center;
+    border-radius: 4rem;
+}

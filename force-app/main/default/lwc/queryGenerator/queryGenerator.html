@@ -1,60 +1,65 @@
 <!-- sldsValidatorIgnore -->
 <template>
-    <lightning-card title="Query Genarator" icon-name="standard:customer">
-        <div class="slds-var-m-around_medium">
-            <lightning-layout>
-                <lightning-layout-item padding="around-small" size="12">
-                    <lightning-combobox name="Select Object"
-                                label="Select Object"
-                                placeholder="--None--"
-                                value={objValue}
-                                onchange={handleObjectChange}
-                                options={objectOptions}></lightning-combobox>
-            <!-- <p>Selected Object Value: {objValue}</p> -->
+    <!-- <div class="appContainer"> -->
+        <lightning-card title="Query Genarator" icon-name="standard:customer">
+            <div class="slds-var-m-around_medium">
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <lightning-combobox name="Select Object"
+                                    label="Select Object"
+                                    placeholder="--None--"
+                                    value={objValue}
+                                    onchange={handleObjectChange}
+                                    options={objectOptions}></lightning-combobox>
+                <!-- <p>Selected Object Value: {objValue}</p> -->
 
-            <div if:true={showDualListBox}>
-                <lightning-dual-listbox name="Select Fields"
-                                label="Select Fields"
-                                source-label="Available"
-                                selected-label="Selected"
-                                field-level-help="Select your Query Fields"
-                                value={fieldValue}
-                                options={fieldOptions}
-                                onchange={handleFieldChange}></lightning-dual-listbox>
-            <!-- <p>Selected Field Value: {fieldValue}</p> -->
-            </div>
-            
+                <div if:true={showDualListBox}>
+                    <lightning-dual-listbox name="Select Fields"
+                                    label="Select Fields"
+                                    source-label="Available"
+                                    selected-label="Selected"
+                                    field-level-help="Select your Query Fields"
+                                    value={fieldValue}
+                                    options={fieldOptions}
+                                    onchange={handleFieldChange}></lightning-dual-listbox>
+                <!-- <p>Selected Field Value: {fieldValue}</p> -->
+                </div>
+                
 
-            <div if:true={showButton} class="slds-var-m-top_small slds-align_absolute-center">
+                <div if:true={showButton} class="slds-var-m-top_small slds-align_absolute-center">
+                        <lightning-button variant="brand" 
+                                        label="Generate Query" 
+                                        title="Generate Query" 
+                                        onclick={handleQueryClick}></lightning-button>
+                        <!-- <p>{generatedQuery}</p> -->
+                </div>
+
+                
+                <div if:true={showTextArea} class="slds-var-m-top_small">
+                    <lightning-textarea name="SOQL Query" 
+                                    label="Generated SOQL Query" 
+                                    value={generatedQuery}></lightning-textarea>
+                </div>
+
+                <div if:true={showDataTableButton} class="slds-align_absolute-center">
                     <lightning-button variant="brand" 
-                                    label="Generate Query" 
-                                    title="Generate Query" 
-                                    onclick={handleQueryClick}></lightning-button>
-                    <!-- <p>{generatedQuery}</p> -->
-            </div>
+                                    label="Generate Table" 
+                                    title="Generate Table" 
+                                    onclick={handleTableClick}></lightning-button>
+                </div>
 
-            
-            <div if:true={showTextArea} class="slds-var-m-top_small">
-                <lightning-textarea name="SOQL Query" 
-                                label="Generated SOQL Query" 
-                                value={generatedQuery}></lightning-textarea>
+                <div class="slds-var-m-around_medium">
+                <!-- <div class="slds-var-m-around_medium" if:true={showTable}> -->
+                    <template if:true={showDataTable}>
+                        <lightning-datatable key-field="Id" 
+                                            data={data} 
+                                            columns={columns} 
+                                            hide-checkbox-column show-row-number-column></lightning-datatable>
+                    </template>
+                </div>
+                    </lightning-layout-item>
+                </lightning-layout>
             </div>
-
-            <div if:true={showDataTableButton} class="slds-align_absolute-center">
-                <lightning-button variant="brand" 
-                                label="Generate Table" 
-                                title="Generate Table" 
-                                onclick={handleTableClick}></lightning-button>
-            </div>
-
-            <!-- <div class="slds-var-m-around_medium"> -->
-            <div class="slds-var-m-around_medium" if:true={showTable}>
-                <template if:true={showDataTable}>
-                    <lightning-datatable key-field="Id" data={data} columns={columns}></lightning-datatable>
-                </template>
-            </div>
-                </lightning-layout-item>
-            </lightning-layout>
-        </div>
-    </lightning-card>
+        </lightning-card>
+    <!-- </div> -->
 </template>
